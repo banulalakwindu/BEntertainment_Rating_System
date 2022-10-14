@@ -1,9 +1,9 @@
 const { createPool } = require("mysql");
 const pool = createPool({
-  host: "sql6.freemysqlhosting.net",
-  user: "sql6516615",
-  password: "nrKqkfrxRT",
-  database: "sql6516615",
+  host: "localhost",
+  user: "root",
+  password: "root",
+  database: "ratingdb",
   port: 3306,
 });
 

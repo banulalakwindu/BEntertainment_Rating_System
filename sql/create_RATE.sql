@@ -1,10 +1,8 @@
-CREATE TABLE RATE (
-Rate_Id INT NOT NULL AUTO_INCREMENT,
-Rate_Type BOOL NOT NULL,
-Rate_Item INT NOT NULL,
-Rate_User INT NOT NULL,
-Rate_Size INT NOT NULL,
-PRIMARY KEY (Rate_Id),
-FOREIGN KEY (Rate_Item) REFERENCES MOVIE(Mov_Id),
-FOREIGN KEY (Rate_Item) REFERENCES TV(TV_Id),
-FOREIGN KEY (Rate_User) REFERENCES USER_TABLE(User_Id));
+CREATE TABLE `ratingdb`.`rate` (
+  `Mov_Id` INT NOT NULL,
+  `User_Id` INT NOT NULL,
+  `TV_Id` INT NOT NULL,
+  `Rate_Type` VARCHAR(10) NOT NULL,
+  `Rate_Size` INT NOT NULL,
+  `Rate_Desc` TEXT NULL,
+  PRIMARY KEY (`Mov_Id`, `User_Id`, `TV_Id`));

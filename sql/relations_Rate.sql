@@ -1,0 +1,10 @@
+use ratingdb;
+
+ALTER TABLE rate
+ADD FOREIGN KEY (Mov_Id) REFERENCES movie(Mov_Id);
+
+ALTER TABLE rate
+ADD FOREIGN KEY (TV_Id) REFERENCES tv_show(TV_Id);
+
+ALTER TABLE rate
+ADD FOREIGN KEY (User_Id) REFERENCES user_t(User_Id);
