@@ -24,7 +24,7 @@ const MovieCard = ({
         />
         <div className="h-20 w-20 rounded-full bg-gray-900 absolute z-50 bottom-64 left-40 opacity-75"></div>
         <p className="absolute z-50 top-3 right-3 text-xl font-bold text-white">
-          {Age}+
+          {Age == "-" ? "N" : Age}
         </p>
         <div className="absolute z-100 top-28 right-0 h-72 w-56 bg-gradient-to-t from-black transition duration-300 ease-in-out group-hover:-translate-y-12"></div>
         <p className="absolute z-50 bottom-24 left-4 font-bold text-2xl capitalize text-white">
