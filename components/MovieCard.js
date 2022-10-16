@@ -30,9 +30,9 @@ const MovieCard = ({
         <p className="absolute z-50 bottom-24 left-4 font-bold text-2xl capitalize text-white">
           {Title}
         </p>
-        <p className="absolute z-50 bottom-20 left-4 text-md text-white">
+        {/* <p className="absolute z-50 bottom-20 left-4 text-md text-white">
           {Year}
-        </p>
+        </p> */}
         <p className="absolute z-50 bottom-16 left-4 text-md text-white">
           {Director}
         </p>

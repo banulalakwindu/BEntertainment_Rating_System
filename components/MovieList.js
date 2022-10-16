@@ -8,7 +8,7 @@ const MovieList = ({ movData }) => {
           <MovieCard
             key={movie.Mov_Id}
             Title={movie.Mov_Name}
-            Director={movie.Mov_Dir}
+            Director={movie.Dir_Name}
             Character={movie.Mov_Cast_1}
             Year={movie.Mov_Year}
             Language={movie.Mov_Lang}
