@@ -25,11 +25,6 @@ export async function getServerSideProps() {
   const res = await fetch("http://localhost:3000/api/movie/movie");
   const movData = await res.json();
 
-  // const res1 = await fetch("http://localhost:3000/api/director/director");
-  // const movData1 = await res1.json();
-
-  //console.log(movData1);
-
   return {
     props: { movData },
   };

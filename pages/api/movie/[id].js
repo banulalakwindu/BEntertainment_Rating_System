@@ -1,8 +1,7 @@
 import nc from "next-connect";
-import { getMovieById } from "../../../controller/movie/movie";
+import { getMovieById, deleteMovieById } from "../../../controller/movie/movie";
 
 const handler = nc();
 handler.get(getMovieById);
-// handler.delete(deleteEmployeeById);
-// handler.put(updateEmployee);
+handler.delete(deleteMovieById);
 export default handler;

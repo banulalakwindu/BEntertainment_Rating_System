@@ -1,0 +1,14 @@
+import { excuteQuery } from "../../config/db";
+
+const getAllUsers = async (req, res) => {
+  try {
+    let userData = await excuteQuery("SELECT * FROM ratingdb.user_t;", []);
+    res.send(userData);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+const saveUser = async (req, res) => {};
+
+export { getAllUsers, saveUser };

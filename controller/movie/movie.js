@@ -6,7 +6,6 @@ const getAllMovies = async (req, res) => {
       "SELECT * FROM ratingdb.movie inner join ratingdb.director on Mov_Id = Dir_Id;",
       []
     );
-
     res.send(moviesData);
   } catch (error) {
     res.status(500).json(error);
@@ -16,14 +15,27 @@ const getAllMovies = async (req, res) => {
 const getMovieById = async (req, res) => {
   let id = req.query.id;
   try {
-    let movData = await executeQuery(
-      "select * from ratingdb.movie where Mov_Id=${id};",
+    let movIdData = await excuteQuery(
+      `select * from ratingdb.movie where Mov_Id=${id};`,
       []
     );
-    res.status(500).json(movData);
-  } catch (err) {
-    res.status(500).json(err);
+    res.status(200).json(movIdData);
+  } catch (error) {
+    res.status(500).json(error);
   }
 };
 
-export { getAllMovies, getMovieById };
+const deleteMovieById = async (req, res) => {
+  let id = req.query.id;
+  try {
+    let delemovIdData = await excuteQuery(
+      `delete from ratingdb.movie where Mov_Id=${id};`,
+      []
+    );
+    res.status(200).json(delemovIdData);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+export { getAllMovies, getMovieById, deleteMovieById };
