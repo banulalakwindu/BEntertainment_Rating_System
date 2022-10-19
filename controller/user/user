@@ -9,6 +9,79 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-const saveUser = async (req, res) => {};
+const getUserById = async (req, res) => {
+  let id = req.query.id;
+  try {
+    let userData = await excuteQuery(
+      `SELECT * FROM ratingdb.user_t WHERE user_id =${id}`,
+      []
+    );
+    res.status(200).json(userData);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
 
-export { getAllUsers, saveUser };
+const deleteUserById = async (req, res) => {
+  let id = req.query.id;
+  try {
+    let userData = await excuteQuery(
+      `DELETE FROM ratingdb.user_t WHERE user_id =${id}`,
+      [id]
+    );
+    res.status(200).json(userData);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+const saveUser = async (req, res) => {
+  console.log(req.body);
+  let User_Name = req.body.User_Name;
+  let User_Country = req.body.User_Country;
+  let User_Email = req.body.User_Email;
+  let User_Link = req.body.User_Link;
+  let User_Dob = req.body.User_Dob;
+  try {
+    let userData = await excuteQuery(
+      "insert into user_t (User_Name, User_Country, User_Email, User_Link, User_Dob) values (?,?,?,?,?)",
+      [User_Name, User_Country, User_Email, User_Link, User_Dob]
+    );
+    userData = await excuteQuery(
+      `SELECT * FROM ratingdb.user_t where User_Id=${userData.insertId}`,
+      []
+    );
+    res.status(200).json(userData);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+const updateUser = async (req, res) => {
+  let id = req.query.id;
+  const { User_Name, User_Country, User_Email, User_Link, User_Dob } = req.body;
+  try {
+    userData = await excuteQuery(
+      "SELECT * FROM ratingdb.user_t where User_Id=?",
+      [id]
+    );
+    console.log(userData.length);
+    if (userData.length > 0) {
+      let userData = await excuteQuery(
+        `UPDATE ratingdb.user_t SET User_Name=?, User_Country=?, User_Email=?, User_Link=?, User_Dob=? WHERE User_Id=?`,
+        [User_Name, User_Country, User_Email, User_Link, User_Dob, id]
+      );
+      userData = await excuteQuery(
+        `SELECT * FROM ratingdb.user_t where User_Id=?`,
+        [id]
+      );
+      res.status(200).json(userData);
+    }
+
+    res.status(200).json(userData);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+export { getAllUsers, getUserById, deleteUserById, saveUser, updateUser };
