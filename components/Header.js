@@ -25,13 +25,22 @@ const Header = () => {
             TV-Shows
           </a>
         </div>
-        <a
-          className="flex uppercase font-bold px-3 py-1 mr-4 text-gray-900 bg-white rounded-full hover:bg-sky-800 hover:text-white transition delay-150 duration-300 ease-in-out"
-          href="/user"
-        >
-          <UserIcon className=" h-5 w-5 m-auto pr-1" />
-          Login
-        </a>
+        <div className="flex">
+          <a
+            className="flex uppercase font-bold px-3 py-1 mr-4 text-gray-900 bg-white rounded-full hover:bg-sky-800 hover:text-white transition delay-150 duration-300 ease-in-out"
+            href="/adduser"
+          >
+            <UserIcon className=" h-5 w-5 m-auto pr-1" />
+            Login
+          </a>
+          <a
+            className="flex uppercase font-bold px-3 py-1 mr-4 text-gray-900 bg-white rounded-full hover:bg-sky-800 hover:text-white transition delay-150 duration-300 ease-in-out"
+            href="/admin"
+          >
+            <UserIcon className=" h-5 w-5 m-auto pr-1" />
+            Admin
+          </a>
+        </div>
       </div>
     </div>
   );

@@ -62,7 +62,7 @@ const updateUser = async (req, res) => {
   const { User_Name, User_Country, User_Email, User_Link, User_Dob } = req.body;
   try {
     let userData = await excuteQuery(
-      "SELECT * FROM ratingdb.user_t where User_Id=?",
+      `select User_Id, User_Name, User_Country, User_Email, User_Link, DATE_FORMAT(User_Dob, "%Y-%m-%d") as User_Dob from ratingdb.user_t where User_Id=?`,
       [id]
     );
     if (userData.length > 0) {
