@@ -7,8 +7,12 @@
 
 .th,
 .td {
+  max-width: 200px;
   padding: 16px 24px;
   text-align: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .thead th {

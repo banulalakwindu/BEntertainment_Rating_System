@@ -23,7 +23,7 @@ const EditUser = ({ updateData }) => {
       `http://localhost:3000/api/user/${updateData[0].User_Id}`,
       addUser
     );
-    if (data.data) router.push("/adduser");
+    if (data.data) router.push("/user");
     setUser({
       User_Name: "",
       User_Country: "",
@@ -31,6 +31,7 @@ const EditUser = ({ updateData }) => {
       User_Link: "",
       User_Dob: "",
     });
+    alert("User Updated Successfully");
   };
 
   const handleChange = (e) => {
@@ -99,7 +100,7 @@ const EditUser = ({ updateData }) => {
           >
             Update
           </button>
-          <Link href={`/admin`}>
+          <Link href={`/user`}>
             <button
               className="rounded-md bg-yellow-500 text-white py-3 px-10 my-5 mx-2"
               type="submit"

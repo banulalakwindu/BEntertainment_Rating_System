@@ -1,5 +1,5 @@
 import Image from "next/dist/client/image";
-import { UserIcon } from "@heroicons/react/outline";
+import { UserIcon, UsersIcon } from "@heroicons/react/solid";
 
 const Header = () => {
   return (
@@ -27,17 +27,17 @@ const Header = () => {
         </div>
         <div className="flex">
           <a
-            className="flex uppercase font-bold px-3 py-1 mr-4 text-gray-900 bg-white rounded-full hover:bg-sky-800 hover:text-white transition delay-150 duration-300 ease-in-out"
+            className="flex uppercase font-bold px-3 py-1 mr-4 text-white bg-sky-800 rounded-md hover:bg-sky-600 hover:text-white transition duration-300 ease-in-out"
             href="/adduser"
           >
             <UserIcon className=" h-5 w-5 m-auto pr-1" />
-            Login
+            SignUp
           </a>
           <a
-            className="flex uppercase font-bold px-3 py-1 mr-4 text-gray-900 bg-white rounded-full hover:bg-sky-800 hover:text-white transition delay-150 duration-300 ease-in-out"
+            className="flex uppercase font-bold px-3 py-1 mr-4 text-white bg-sky-800 rounded-md hover:bg-sky-600 hover:text-white transition duration-300 ease-in-out"
             href="/admin"
           >
-            <UserIcon className=" h-5 w-5 m-auto pr-1" />
+            <UsersIcon className=" h-5 w-5 m-auto pr-1" />
             Admin
           </a>
         </div>

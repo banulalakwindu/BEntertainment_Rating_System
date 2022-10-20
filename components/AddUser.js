@@ -23,6 +23,7 @@ function AddUser() {
       User_Link: "",
       User_Dob: "",
     });
+    alert("User Added Successfully");
   };
 
   const handleChange = (e) => {
@@ -57,11 +58,13 @@ function AddUser() {
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
           <input
-            type="text"
+            type="email"
             name="User_Email"
             placeholder="Enter Email"
             onChange={handleChange}
             value={addUser.User_Email}
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            title="Please enter valid email"
             className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
           />
         </div>
@@ -82,6 +85,8 @@ function AddUser() {
             placeholder="Enter Birthday"
             onChange={handleChange}
             value={addUser.User_Dob}
+            pattern="^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$"
+            title="Enter a date in this format YYYY-MM-DD"
             className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
           />
         </div>
