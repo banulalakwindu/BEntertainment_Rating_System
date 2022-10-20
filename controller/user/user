@@ -61,26 +61,22 @@ const updateUser = async (req, res) => {
   let id = req.query.id;
   const { User_Name, User_Country, User_Email, User_Link, User_Dob } = req.body;
   try {
-    userData = await excuteQuery(
+    let userData = await excuteQuery(
       "SELECT * FROM ratingdb.user_t where User_Id=?",
       [id]
     );
     console.log(userData.length);
-    if (userData.length > 0) {
-      let userData = await excuteQuery(
-        `UPDATE ratingdb.user_t SET User_Name=?, User_Country=?, User_Email=?, User_Link=?, User_Dob=? WHERE User_Id=?`,
-        [User_Name, User_Country, User_Email, User_Link, User_Dob, id]
-      );
-      userData = await excuteQuery(
-        `SELECT * FROM ratingdb.user_t where User_Id=?`,
-        [id]
-      );
-      res.status(200).json(userData);
-    }
-
-    res.status(200).json(userData);
+    // if (userData.length > 0) {
+    //   userData = await excuteQuery(
+    //     "UPDATE ratingdb.user_t SET User_Name=?, User_Country=?, User_Email=?, User_Link=?, User_Dob=? WHERE User_Id=?",
+    //     [id, User_Name, User_Country, User_Email, User_Link, User_Dob]
+    //   );
+    //   res.status(200).json(userData);
+    // } else {
+    //   res.status(404).json(`User to id=${id} not found`);
+    // }
   } catch (error) {
-    res.status(500).json(error);
+    res.status(400).json(error);
   }
 };
 
