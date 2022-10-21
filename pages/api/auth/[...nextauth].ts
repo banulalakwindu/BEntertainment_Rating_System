@@ -1,27 +1,27 @@
 import NewxtAuth, { NextAuthOptions } from "next-auth";
 import CredentialProvider from "next-auth/providers/credentials";
 
-const authOptions: NextAuthOptions = {
-  session: {
-    strategy: "jwt",
-  },
+export default NewxtAuth({
   providers: [
     CredentialProvider({
-      type: "credentials",
-      credentials: {},
-      authorize(credentials, req) {
-        const { email, password } = credentials as {
-          email: string;
-          password: string;
-        };
-        if (email !== "test" && password !== "test") {
+      name: "Credentials",
+      async authorize(credentials, req) {
+        const user = await fetch("http://localhost:3000/api/user/user", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(credentials),
+        }).then((res) => res.json());
+
+        console.log(user);
+
+        if (user) {
+          return user;
+        } else {
           return null;
         }
-        return {
-          email: email,
-          id: 1,
-        };
       },
     }),
   ],
-};
+});

@@ -12,9 +12,9 @@ const Movietable = ({ movieData }) => {
     router.push("/movie");
   };
   return (
-    <div className="overflow-x-hidden h-screen">
+    <div>
       <Header />
-      <div className=" w-full h-screen overflow-x-scroll text-center mt-10">
+      <div className=" w-full text-center mt-10">
         <h1 className="text-lg mx-auto mb-5 topic">Movie Table</h1>
         <div className="flex flex-col justify-center my-10 ">
           <table className={styles.table}>

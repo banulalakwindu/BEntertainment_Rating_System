@@ -1,8 +1,21 @@
 import React from "react";
 import Header from "../components/Header";
 import Head from "next/head";
+import { useFormik } from "formik";
+import { useState } from "react";
+import registerValidate from "../lib/validate";
 
 const login = () => {
+  const [show, setShow] = useState(false);
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+    },
+    onSubmit,
+  });
+
+  async function onSubmit(values) {}
+
   return (
     <div className="text-white">
       <Head>
@@ -10,14 +23,18 @@ const login = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <form className="flex flex-col mt-10  w-full md:w-1/3  mx-auto py-10 rounded-xl ">
+      <form
+        onSubmit={formik.handleSubmit}
+        className="flex flex-col mt-10  w-full md:w-1/2  mx-auto py-10 rounded-xl "
+      >
         <h1 className="mx-auto text-xl mb-5 topic text-white">Login</h1>
         <div className="flex justify-center mx-auto w-full px-20">
           <input
             type="email"
-            name="User_Email"
+            name="email"
             placeholder="Enter Email"
-            className="  w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            {...formik.getFieldProps("email")}
+            className=" w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
           />
         </div>
 

@@ -14,7 +14,7 @@ const MovieCard = ({
   return (
     <div>
       <div className="mx-auto h-80 w-56 bg-white overflow-hidden relative rounded-xl border-2 border-slate-600 transition duration-300 ease-in-out hover:border-cyan-500 group">
-        <Image
+        <img
           priority="true"
           src={Link}
           layout="fixed"
