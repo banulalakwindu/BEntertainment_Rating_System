@@ -2,9 +2,11 @@ import Header from "../components/Header";
 
 const admin = () => {
   return (
-    <div>
+    <div cla>
       <Header />
+
       <div className="flex flex-col px-20 mt-20">
+        <h1 className="topic mx-auto">Admin Panel</h1>
         <div className="flex justify-center w-full py-5 ">
           <a
             href="/adduser"

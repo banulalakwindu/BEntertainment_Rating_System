@@ -15,7 +15,7 @@ const Usertable = ({ userData }) => {
     <div>
       <Header />
       <div className="mx-10 flex flex-col justify-center my-10">
-        <h1 className="text-lg mx-auto mb-5">User Table</h1>
+        <h1 className="text-lg mx-auto mb-5 topic">User Table</h1>
         <table className={styles.table}>
           <thead className={styles.thead}>
             <tr>

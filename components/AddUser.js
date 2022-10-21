@@ -34,8 +34,8 @@ function AddUser() {
   return (
     <div>
       <Header />
-      <form onSubmit={onSubmit} className="flex flex-col mt-10">
-        <h1 className="mx-auto text-xl mb-5">Add User</h1>
+      <form onSubmit={onSubmit} className="flex flex-col mt-10 text-white">
+        <h1 className="mx-auto text-xl mb-5 topic">Add User</h1>
         <div className="flex justify-center mx-auto w-full px-20">
           <input
             type="text"
@@ -90,6 +90,11 @@ function AddUser() {
             className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
           />
         </div>
+        <div className="flex justify-center mx-auto w-full px-20">
+          <input type="checkbox" />
+          <label className="mx-2">I agree to the terms and conditions</label>
+        </div>
+
         <div className="mx-auto">
           <button
             className="rounded-md bg-green-800 text-white py-3 px-10 my-5"
@@ -98,6 +103,12 @@ function AddUser() {
             Submit
           </button>
         </div>
+        <small className="mx-auto text-lg text-white">
+          Already a member? Click{" "}
+          <a className="text-blue-500 underline" href="/login">
+            Login
+          </a>
+        </small>
       </form>
     </div>
   );

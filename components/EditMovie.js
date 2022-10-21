@@ -59,7 +59,7 @@ const EditMovie = ({ updateData }) => {
     <div>
       <Header />
       <form onSubmit={onSubmit} className="flex flex-col mt-10">
-        <h1 className="mx-auto text-xl mb-5">Edit Movie</h1>
+        <h1 className="mx-auto text-xl mb-5 topic">Edit Movie</h1>
         <div className="flex justify-center mx-auto w-full px-20">
           <input
             type="text"

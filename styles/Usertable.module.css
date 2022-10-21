@@ -3,6 +3,7 @@
   border: 1px solid #343a40;
   border-collapse: collapse;
   margin-top: 5px;
+  color: white;
 }
 
 .th,
@@ -17,15 +18,15 @@
 
 .thead th {
   background-color: #212529;
-  color: #fff;
+  color: rgb(255, 255, 255);
   width: 25%;
 }
 
 .tbody tr:nth-child(odd) {
-  background-color: #f8f9fa;
+  background-color: #f8f9fa45;
 }
 .tbody tr:nth-child(even) {
-  background-color: #e9ecef;
+  background-color: #e9ecef25;
 }
 .delete {
   background-color: red;
