@@ -120,13 +120,15 @@ const EditMovie = ({ updateData }) => {
             className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
           />
         </div>
+
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <textarea
             type="text"
             name="Mov_Desc"
             placeholder="Enter Movie Description"
             onChange={handleChange}
             value={addMovie.Mov_Desc}
+            rows="5"
             className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
           />
         </div>
@@ -141,12 +143,13 @@ const EditMovie = ({ updateData }) => {
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <textarea
             type="text"
             name="Mov_Link"
             placeholder="Enter Movie Link"
             onChange={handleChange}
             value={addMovie.Mov_Link}
+            rows="3"
             className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
           />
         </div>
@@ -200,6 +203,7 @@ const EditMovie = ({ updateData }) => {
             className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
           />
         </div>
+
         <div className="mx-auto">
           <button
             className="rounded-md bg-green-800 text-white py-3 px-10 my-5 mx-2"

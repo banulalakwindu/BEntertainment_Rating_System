@@ -43,6 +43,10 @@ const Header = () => {
             <UsersIcon className=" h-5 w-5 m-auto pr-1" />
             Admin
           </a>
+          <img
+            src="https://www.kindpng.com/picc/m/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png"
+            className="h-8 w-8 bg-white mr-5 rounded-full"
+          />
         </div>
       </div>
     </div>

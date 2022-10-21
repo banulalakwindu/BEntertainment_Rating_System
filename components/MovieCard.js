@@ -1,4 +1,3 @@
-import Image from "next/dist/client/image";
 import { StarIcon } from "@heroicons/react/solid";
 
 const MovieCard = ({
