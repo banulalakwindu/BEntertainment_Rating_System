@@ -1,12 +1,17 @@
 import Header from "../components/Header";
+import Head from "next/head";
 
 const admin = () => {
   return (
-    <div cla>
+    <div>
+      <Head>
+        <title>Entertainment | Admin Dashboard</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Header />
 
       <div className="flex flex-col px-20 mt-20">
-        <h1 className="topic mx-auto">Admin Panel</h1>
+        <h1 className="topic mx-auto">Admin Dashboard</h1>
         <div className="flex justify-center w-full py-5 ">
           <a
             href="/adduser"

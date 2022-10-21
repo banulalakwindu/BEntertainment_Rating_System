@@ -1,4 +1,4 @@
-import Head from "next/head";
+import Head from "../node_modules/next/head";
 import React from "react";
 import Header from "../components/Header";
 import MovieList from "../components/MovieList";

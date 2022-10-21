@@ -31,3 +31,22 @@ body {
 .formop {
   background-color: rgba(255, 255, 255, 0.3);
 }
+
+.oops {
+  color: white;
+  font-size: 170px;
+  font-weight: 100;
+  margin-top: -170px;
+  margin-bottom: -40px;
+}
+
+input {
+  background-color: rgba(153, 153, 153, 0.3);
+  border: none;
+  border-bottom: 5px rgb(255, 255, 255) solid;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px;
+  margin-bottom: 20px;
+}

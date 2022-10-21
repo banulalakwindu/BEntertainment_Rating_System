@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Header from "../components/Header";
+import Head from "next/head";
 
 function AddMovie() {
   const router = useRouter();
@@ -54,9 +55,13 @@ function AddMovie() {
 
   return (
     <div>
+      <Head>
+        <title>Entertainment | Add Movie</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Header />
       <form onSubmit={onSubmit} className="flex flex-col mt-10">
-        <h1 className="mx-auto text-xl mb-5 topic">Edit Movie</h1>
+        <h1 className="mx-auto text-xl mb-5 topic">Add Movie</h1>
         <div className="flex justify-center mx-auto w-full px-20">
           <input
             type="text"

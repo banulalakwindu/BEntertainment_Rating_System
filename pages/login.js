@@ -1,9 +1,14 @@
 import React from "react";
 import Header from "../components/Header";
+import Head from "next/head";
 
 const login = () => {
   return (
     <div className="text-white">
+      <Head>
+        <title>Entertainment | Login</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Header />
       <form className="flex flex-col mt-10  w-full md:w-1/3  mx-auto py-10 rounded-xl ">
         <h1 className="mx-auto text-xl mb-5 topic text-white">Login</h1>

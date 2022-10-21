@@ -1,9 +1,14 @@
 import React from "react";
 import Usertable from "../components/Usertable";
+import Head from "next/head";
 
 const user = ({ data }) => {
   return (
     <div>
+      <Head>
+        <title>Entertainment | User Table</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Usertable userData={data} />
     </div>
   );

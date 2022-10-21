@@ -1,9 +1,14 @@
 import React from "react";
 import Movietable from "../components/Movietable";
+import Head from "next/head";
 
 const movie = ({ data }) => {
   return (
     <div>
+      <Head>
+        <title>Entertainment | Movie Table</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Movietable movieData={data} />
     </div>
   );
