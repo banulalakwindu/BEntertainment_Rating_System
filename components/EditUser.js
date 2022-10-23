@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import Header from "../components/Header";
+import { Button, TextField } from "@mui/material";
 
 const EditUser = ({ updateData }) => {
   console.log("updateData", updateData);
@@ -44,70 +44,109 @@ const EditUser = ({ updateData }) => {
       <form onSubmit={onSubmit} className="flex flex-col mt-10">
         <h1 className="mx-auto text-xl mb-5 topic">Edit User</h1>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="User_Name"
-            placeholder="Enter Username"
             onChange={handleChange}
             value={addUser.User_Name}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter Username"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="User_Country"
-            placeholder="Enter Country"
             onChange={handleChange}
             value={addUser.User_Country}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter Country"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="User_Email"
-            placeholder="Enter Email"
             onChange={handleChange}
             value={addUser.User_Email}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter Email"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="User_Link"
-            placeholder="Enter Link"
             onChange={handleChange}
             value={addUser.User_Link}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter User Image Link"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="User_Dob"
-            placeholder="Enter Birthday"
             onChange={handleChange}
             value={addUser.User_Dob}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            clabel="Enter Birthday"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
-        <div className="mx-auto">
-          <button
-            className="rounded-md bg-green-800 text-white py-3 px-10 my-5 mx-2"
+        <div className="mx-auto mt-5">
+          <Button
             type="submit"
+            size="large"
+            className="bg-[#1976D2] mx-2"
+            variant="contained"
           >
             Update
-          </button>
-          <Link href={`/user`}>
-            <button
-              className="rounded-md bg-yellow-500 text-white py-3 px-10 my-5 mx-2"
-              type="submit"
-            >
-              Go Back
-            </button>
-          </Link>
+          </Button>
+
+          <Button
+            type="submit"
+            size="large"
+            href="/user"
+            className="bg-[#27bb31] hover:bg-[#239f2b] mx-2"
+            variant="contained"
+          >
+            Go Back
+          </Button>
         </div>
       </form>
     </div>

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Header from "../components/Header";
 import Head from "next/head";
+import { TextField, Button } from "@mui/material";
 
 function AddMovie() {
   const router = useRouter();
@@ -63,152 +64,252 @@ function AddMovie() {
       <form onSubmit={onSubmit} className="flex flex-col mt-10">
         <h1 className="mx-auto text-xl mb-5 topic">Add Movie</h1>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="Mov_Name"
-            placeholder="Enter Movie Name"
             onChange={handleChange}
             value={addMovie.Mov_Name}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter Movie Name"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="Mov_Year"
-            placeholder="Enter Movie Year"
             onChange={handleChange}
             value={addMovie.Mov_Year}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter Movie Year"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="Mov_Time"
-            placeholder="Enter Movie Time"
             onChange={handleChange}
             value={addMovie.Mov_Time}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter Movie Playing Time"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="Mov_Lang"
-            placeholder="Enter Movie Language"
             onChange={handleChange}
             value={addMovie.Mov_Lang}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter Movie Speaking Language"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="Mov_Country"
-            placeholder="Enter Movie Country"
             onChange={handleChange}
             value={addMovie.Mov_Country}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter Movie Country"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="Mov_Age"
-            placeholder="Enter Movie Age"
             onChange={handleChange}
             value={addMovie.Mov_Age}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter Movie Age Restriction"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="Mov_Desc"
-            placeholder="Enter Movie Description"
             onChange={handleChange}
             value={addMovie.Mov_Desc}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter Movie Storline"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="Mov_Type"
-            placeholder="Enter Movie Type"
             onChange={handleChange}
             value={addMovie.Mov_Type}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter Movie Genre"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="Mov_Link"
-            placeholder="Enter Movie Link"
             onChange={handleChange}
             value={addMovie.Mov_Link}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter Movie Cover Image Link"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="Mov_Cast_1"
-            placeholder="Enter Movie Cast 1"
             onChange={handleChange}
             value={addMovie.Mov_Cast_1}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter Movie Cast 1"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="Mov_Cast_2"
-            placeholder="Enter Movie Cast 2"
             onChange={handleChange}
             value={addMovie.Mov_Cast_2}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter Movie Cast 2"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="Mov_Cast_3"
-            placeholder="Enter Movie Cast 3"
             onChange={handleChange}
             value={addMovie.Mov_Cast_3}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter Movie Cast 3"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="Mov_Dir"
-            placeholder="Enter Movie Director"
             onChange={handleChange}
             value={addMovie.Mov_Dir}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter Movie Director"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="Mov_Rate"
-            placeholder="Enter Movie Rate"
             onChange={handleChange}
             value={addMovie.Mov_Rate}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter Movie Rate"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
-        <div className="mx-auto">
-          <button
-            className="rounded-md bg-green-800 text-white py-3 px-10 my-5 mx-2"
+        <div className="mx-auto mt-2 mb-5">
+          <Button
             type="submit"
+            size="large"
+            className="bg-[#1976D2]"
+            variant="contained"
           >
             Submit
-          </button>
+          </Button>
         </div>
       </form>
     </div>

@@ -1,10 +1,12 @@
 import React from "react";
 import Header from "../components/Header";
 import Head from "next/head";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
+import { TextField, Button, InputEmailField } from "@mui/material";
 
 const login = () => {
   const { data: session } = useSession();
+  console.log(session);
   return (
     <div className="text-white">
       <Head>
@@ -15,20 +17,47 @@ const login = () => {
       <form className="flex flex-col mt-10  w-full md:w-1/2  mx-auto py-10 rounded-xl ">
         <h1 className="mx-auto text-xl mb-5 topic text-white">Login</h1>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
+            className="w-full"
+            type="email"
+            id="filled-basic"
+            label="Enter Email"
+            variant="filled"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+            }}
+          />
+          {/* <input
             type="email"
             name="email"
             placeholder="Enter Email"
             className=" w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
-          />
+          /> */}
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
+            className="w-full"
+            id="filled-basic"
+            label="Enter Password"
+            variant="filled"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+            }}
+          />
+          {/* <input
             type="password"
             name="password"
             placeholder="***************"
             className=" w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
-          />
+          /> */}
+        </div>
+
+        <div className="mx-auto mt-10">
+          <Button size="large" className="bg-[#1976D2]" variant="contained">
+            Submit
+          </Button>
         </div>
 
         <small className="mx-auto text-lg text-white my-5">or login with</small>
@@ -40,18 +69,20 @@ const login = () => {
               alt=""
               height={50}
               width={50}
+              onClick={() => signIn()}
               className="rounded-full bg-white p-1 m-2"
             />
           </a>
-          <a href="/">
+          <div>
             <img
               src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
               alt=""
               height={50}
               width={50}
+              onClick={() => signIn()}
               className="rounded-full m-2"
             />
-          </a>
+          </div>
           <a href="/">
             <img
               src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA"
@@ -63,15 +94,7 @@ const login = () => {
           </a>
         </div>
 
-        <div className="mx-auto">
-          <button
-            className="rounded-md bg-green-800 text-white py-3 px-10 my-5"
-            type="submit"
-          >
-            Submit
-          </button>
-        </div>
-        <small className="mx-auto text-lg text-white">
+        <small className="mx-auto mt-5 text-lg text-white">
           Still not a member? Click{" "}
           <a className="text-blue-500 underline" href="/adduser">
             Sign Up

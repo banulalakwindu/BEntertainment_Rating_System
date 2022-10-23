@@ -1,8 +1,24 @@
 import Image from "next/dist/client/image";
-import { UserIcon, UsersIcon } from "@heroicons/react/solid";
+import { HiUser, HiUsers, HiUserCircle } from "react-icons/hi";
+import { GoSignOut } from "react-icons/go";
 import Link from "next/link";
+import { useSession, signOut } from "next-auth/react";
+import { Button } from "../node_modules/@mui/material/index";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import IconButton from "@mui/material/IconButton";
+import { useState } from "react";
 
 const Header = () => {
+  const { data: session } = useSession();
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <div className="shadow-md sticky top-0 z-50 ">
       <div className="flex justify-between items-center bg-gradient-to-r from-sky-900 to-gray-900 border-b-8  border-b-sky-700">
@@ -15,38 +31,76 @@ const Header = () => {
           </div>
         </Link>
         <div className="flex">
-          <a
-            className="h-16 w-28 flex uppercase font-bold px-6 py-5 mx-auto text-white hover:bg-sky-800 hover:text-white transition delay-150 duration-300 ease-in-out"
-            href="/"
-          >
+          <Button className="h-16 w-28 text-white" href="/">
             Movies
-          </a>
-          <a
-            className="h-16 flex uppercase font-bold px-3 py-5 mx-auto text-white hover:bg-sky-800 hover:text-white transition delay-150 duration-300 ease-in-out"
-            href="/tvpage"
-          >
+          </Button>
+          <Button className="h-16 text-white" href="/tvpage">
             TV-Shows
-          </a>
+          </Button>
         </div>
         <div className="flex">
-          <a
-            className="flex uppercase font-bold px-3 py-1 mr-4 text-white bg-sky-800 rounded-md hover:bg-sky-600 hover:text-white transition duration-300 ease-in-out"
-            href="/login"
-          >
-            <UserIcon className=" h-5 w-5 m-auto pr-1" />
-            Login
-          </a>
-          <a
-            className="flex uppercase font-bold px-3 py-1 mr-4 text-white bg-sky-800 rounded-md hover:bg-sky-600 hover:text-white transition duration-300 ease-in-out"
-            href="/admin"
-          >
-            <UsersIcon className=" h-5 w-5 m-auto pr-1" />
+          {!session ? (
+            <Button className="mr-4 py-1" href="/login" variant="contained">
+              <HiUser className=" h-4 w-4 mb-1 mr-1" />
+              Login
+            </Button>
+          ) : null}
+
+          <Button className="mr-4" href="/admin" variant="contained">
+            <HiUsers className=" h-4 w-4 mb-1 mr-1" />
             Admin
-          </a>
-          <img
-            src="https://www.kindpng.com/picc/m/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png"
-            className="h-8 w-8 bg-white mr-5 rounded-full"
-          />
+          </Button>
+          <IconButton
+            onClick={handleClick}
+            size="small"
+            aria-controls={open ? "account-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+          >
+            <img
+              src={
+                session
+                  ? session.user.image
+                  : "https://www.kindpng.com/picc/m/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png"
+              }
+              className="h-10 w-10 bg-white mr-5 rounded-full border-2 border-white"
+            />
+          </IconButton>
+
+          <Menu
+            anchorEl={anchorEl}
+            id="account-menu"
+            open={open}
+            onClose={handleClose}
+            onClick={handleClose}
+            PaperProps={{
+              elevation: 0,
+              sx: {
+                overflow: "visible",
+                filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                mt: 0.5,
+                "& .MuiAvatar-root": {
+                  width: 32,
+                  height: 32,
+                  ml: -0.5,
+                  mr: 1,
+                },
+              },
+            }}
+            transformOrigin={{ horizontal: "right", vertical: "top" }}
+            anchorOrigin={{ horizontal: "left", vertical: "bottom" }}
+          >
+            <MenuItem>
+              <a href="/account" className="flex">
+                <HiUserCircle className="h-5 w-5 mt-0.5 mr-3" />
+                <h1>Profile</h1>
+              </a>
+            </MenuItem>
+            <MenuItem onClick={() => signOut()}>
+              <GoSignOut className="h-5 w-5 mt-0.5 mr-2 ml-1" />
+              <h1>Logout</h1>
+            </MenuItem>
+          </Menu>
         </div>
       </div>
     </div>

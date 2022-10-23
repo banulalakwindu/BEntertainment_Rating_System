@@ -2,8 +2,12 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Header from "../components/Header";
+import { TextField, Checkbox, Button } from "@mui/material/";
+import { blue } from "@mui/material/colors";
+import { useSession, signIn } from "next-auth/react";
 
 function AddUser() {
+  const session = useSession();
   const router = useRouter();
   const [addUser, setUser] = useState({
     User_Name: "",
@@ -37,58 +41,116 @@ function AddUser() {
       <form onSubmit={onSubmit} className="flex flex-col mt-5 text-white">
         <h1 className="mx-auto text-xl mb-4 topic">Add User</h1>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="User_Name"
-            placeholder="Enter Username"
             onChange={handleChange}
             value={addUser.User_Name}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter Name"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="User_Country"
-            placeholder="Enter Country"
             onChange={handleChange}
             value={addUser.User_Country}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter Country"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="email"
             name="User_Email"
-            placeholder="Enter Email"
             onChange={handleChange}
             value={addUser.User_Email}
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             title="Please enter valid email"
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter Email"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="User_Link"
-            placeholder="Enter Link"
             onChange={handleChange}
             value={addUser.User_Link}
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            label="Enter Profile Picture Link"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
-          <input
+          <TextField
             type="text"
             name="User_Dob"
-            placeholder="Enter Birthday"
             onChange={handleChange}
             value={addUser.User_Dob}
             pattern="^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$"
+            label="Enter Birthday (YYYY-MM-DD)"
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
             title="Enter a date in this format YYYY-MM-DD"
-            className=" md:w-2/4 w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
+            className=" md:w-2/4 w-full mx-auto my-1"
           />
+        </div>
+        <div className="flex justify-center mx-auto w-full px-20">
+          <Checkbox
+            sx={{
+              color: blue[800],
+              "&.Mui-checked": {
+                color: blue[600],
+              },
+            }}
+            className="border-white"
+          />
+          <label className="mx-1 my-2">
+            I agree to the terms and conditions
+          </label>
+        </div>
+        <div className="mx-auto mt-2">
+          <Button
+            type="submit"
+            size="large"
+            className="bg-[#1976D2]"
+            variant="contained"
+          >
+            Submit
+          </Button>
         </div>
         <small className="mx-auto text-lg text-white my-5">or login with</small>
 
@@ -107,6 +169,9 @@ function AddUser() {
               src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
               alt=""
               height={50}
+              onClick={
+                !session ? () => signIn() : () => router.push("/account")
+              }
               width={50}
               className="rounded-full m-2"
             />
@@ -121,21 +186,7 @@ function AddUser() {
             />
           </a>
         </div>
-        <div className="flex justify-center mx-auto w-full px-20">
-          <input type="checkbox" />
-          <label className="mx-2 my-2">
-            I agree to the terms and conditions
-          </label>
-        </div>
 
-        <div className="mx-auto">
-          <button
-            className="rounded-md bg-green-800 text-white py-3 px-10 my-3"
-            type="submit"
-          >
-            Submit
-          </button>
-        </div>
         <small className="mx-auto text-lg text-white">
           Already a member? Click{" "}
           <a className="text-blue-500 underline" href="/login">

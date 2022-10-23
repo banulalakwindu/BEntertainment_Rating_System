@@ -1,5 +1,7 @@
 import Header from "../components/Header";
 import Head from "next/head";
+import { Button } from "@mui/material";
+import { HiUserPlus, HiUserGroup, HiFilm, HiFolder } from "react-icons/hi2";
 
 const admin = () => {
   return (
@@ -13,33 +15,41 @@ const admin = () => {
       <div className="flex flex-col px-20 mt-20">
         <h1 className="topic mx-auto">Admin Dashboard</h1>
         <div className="flex justify-center w-full py-5 ">
-          <a
+          <Button
             href="/adduser"
-            className="w-full mx-5 px-20 py-5 my-4 bg-sky-900 text-white text-xl rounded-lg text-center hover:bg-sky-700 duration-700"
+            variant="contained"
+            className="flex w-full mx-5 my-4 text-xl py-4"
           >
-            Add User
-          </a>
-          <a
+            <h1>Add User</h1>
+            <HiUserPlus className="ml-3" />
+          </Button>
+          <Button
             href="/user"
-            className="w-full mx-5 px-20 py-5 my-4 bg-sky-900 text-white text-xl rounded-lg text-center hover:bg-sky-700 duration-700"
+            variant="contained"
+            className="flex w-full mx-5 my-4 text-xl py-4"
           >
-            User List
-          </a>
+            <h1>User List</h1>
+            <HiUserGroup className="ml-3" />
+          </Button>
         </div>
 
         <div className="flex justify-center w-full py-5 ">
-          <a
+          <Button
             href="/addmovie"
-            className="w-full mx-5 px-20 py-5 my-4 bg-sky-900 text-white text-xl rounded-lg text-center hover:bg-sky-700 duration-700"
+            variant="contained"
+            className="w-full mx-5 my-4 text-xl py-4"
           >
-            Add Movie
-          </a>
-          <a
+            <h1>Add Movie</h1>
+            <HiFilm className="ml-3" />
+          </Button>
+          <Button
             href="/movie"
-            className="w-full mx-5 px-20 py-5 my-4 bg-sky-900 text-white text-xl rounded-lg text-center hover:bg-sky-700 duration-700"
+            variant="contained"
+            className="w-full mx-5 my-4 text-xl py-4"
           >
-            Movie List
-          </a>
+            <h1>Movie List</h1>
+            <HiFolder className="ml-3" />
+          </Button>
         </div>
       </div>
     </div>

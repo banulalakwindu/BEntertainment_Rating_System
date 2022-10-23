@@ -3,7 +3,7 @@ import { excuteQuery } from "../../config/db";
 const getAllMovies = async (req, res) => {
   try {
     let movieData = await excuteQuery(
-      "select Mov_Name, Mov_Year, Mov_Time, Mov_Lang, Mov_Country, Mov_Age, Mov_Desc, Mov_Type, Mov_Link, Cast_Name, Mov_Cast_2, Mov_Cast_3, Dir_Name, Mov_Rate from ratingdb.movie join director on Mov_Dir = Dir_Id join cast_t on Mov_Cast_1 = Cast_Id ;",
+      "select * from ratingdb.movie join director on Mov_Dir = Dir_Id join cast_t on Mov_Cast_1 = Cast_Id ;",
       []
     );
     res.send(movieData);
@@ -16,7 +16,7 @@ const getMovieById = async (req, res) => {
   let id = req.query.id;
   try {
     let movieData = await excuteQuery(
-      `select Mov_Name, Mov_Year, Mov_Time, Mov_Lang, Mov_Country, Mov_Age, Mov_Desc, Mov_Type, Mov_Link, Cast_Name, Mov_Cast_2, Mov_Cast_3, Dir_Name, Mov_Rate from ratingdb.movie join director on Mov_Dir = Dir_Id join cast_t on Mov_Cast_1 = Cast_Id WHERE Mov_Id =${id}`,
+      `select * from ratingdb.movie join director on Mov_Dir = Dir_Id join cast_t on Mov_Cast_1 = Cast_Id WHERE Mov_Id =${id}`,
       []
     );
     res.status(200).json(movieData);
