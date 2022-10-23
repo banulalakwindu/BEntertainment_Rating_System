@@ -161,27 +161,30 @@ function AddUser() {
               alt=""
               height={50}
               width={50}
+              onClick={() => signIn("facebook")}
               className="rounded-full bg-white p-1 m-2"
             />
           </a>
-          <a href="/">
+          <div>
             <img
               src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
               alt=""
               height={50}
               onClick={
-                !session ? () => signIn() : () => router.push("/account")
+                // !session ? () => signIn() : () => router.push("/account")
+                () => signIn("github")
               }
               width={50}
               className="rounded-full m-2"
             />
-          </a>
+          </div>
           <a href="/">
             <img
               src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA"
               alt=""
               height={50}
               width={50}
+              onClick={() => signIn("google")}
               className="rounded-full bg-white p-2 m-2"
             />
           </a>

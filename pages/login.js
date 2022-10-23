@@ -2,11 +2,10 @@ import React from "react";
 import Header from "../components/Header";
 import Head from "next/head";
 import { useSession, signIn } from "next-auth/react";
-import { TextField, Button, InputEmailField } from "@mui/material";
+import { TextField, Button } from "@mui/material";
 
 const login = () => {
   const { data: session } = useSession();
-  console.log(session);
   return (
     <div className="text-white">
       <Head>
@@ -63,35 +62,36 @@ const login = () => {
         <small className="mx-auto text-lg text-white my-5">or login with</small>
 
         <div className="flex mx-auto">
-          <a href="/">
+          <div>
             <img
               src="https://www.edigitalagency.com.au/wp-content/uploads/Facebook-logo-blue-circle-large-transparent-png.png"
               alt=""
               height={50}
               width={50}
-              onClick={() => signIn()}
+              onClick={() => signIn("facebook")}
               className="rounded-full bg-white p-1 m-2"
             />
-          </a>
+          </div>
           <div>
             <img
               src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
               alt=""
               height={50}
               width={50}
-              onClick={() => signIn()}
+              onClick={() => signIn("github")}
               className="rounded-full m-2"
             />
           </div>
-          <a href="/">
+          <div>
             <img
               src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA"
               alt=""
               height={50}
               width={50}
+              onClick={() => signIn("google")}
               className="rounded-full bg-white p-2 m-2"
             />
-          </a>
+          </div>
         </div>
 
         <small className="mx-auto mt-5 text-lg text-white">
