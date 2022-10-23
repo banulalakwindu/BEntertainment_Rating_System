@@ -51,3 +51,7 @@ textarea {
   padding: 10px;
   margin-bottom: 20px;
 }
+
+.under {
+  border-bottom: solid white 2px;
+}

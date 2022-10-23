@@ -172,12 +172,14 @@ function AddMovie() {
             onChange={handleChange}
             value={addMovie.Mov_Desc}
             label="Enter Movie Storline"
+            multiline
             sx={{
               input: { color: "white" },
               label: { color: "white" },
               fieldset: {
                 backgroundColor: "rgba(255, 255, 255, 0.1)",
               },
+              textArea: { color: "white" },
             }}
             className=" md:w-2/4 w-full mx-auto my-1"
           />
@@ -206,12 +208,14 @@ function AddMovie() {
             onChange={handleChange}
             value={addMovie.Mov_Link}
             label="Enter Movie Cover Image Link"
+            multiline
             sx={{
               input: { color: "white" },
               label: { color: "white" },
               fieldset: {
                 backgroundColor: "rgba(255, 255, 255, 0.1)",
               },
+              textArea: { color: "white" },
             }}
             className=" md:w-2/4 w-full mx-auto my-1"
           />

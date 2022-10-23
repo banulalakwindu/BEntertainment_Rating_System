@@ -174,10 +174,10 @@ const EditMovie = ({ updateData }) => {
             sx={{
               input: { color: "white" },
               label: { color: "white" },
-              textArea: { color: "white" },
               fieldset: {
                 backgroundColor: "rgba(255, 255, 255, 0.1)",
               },
+              textArea: { color: "white" },
             }}
             className="md:w-2/4 w-full mx-auto my-1"
           />
@@ -211,10 +211,10 @@ const EditMovie = ({ updateData }) => {
             sx={{
               input: { color: "white" },
               label: { color: "white" },
-              textArea: { color: "white" },
               fieldset: {
                 backgroundColor: "rgba(255, 255, 255, 0.1)",
               },
+              textArea: { color: "white" },
             }}
             className=" md:w-2/4 w-full mx-auto my-1"
           />

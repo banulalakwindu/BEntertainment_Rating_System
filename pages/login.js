@@ -27,12 +27,6 @@ const login = () => {
               label: { color: "white" },
             }}
           />
-          {/* <input
-            type="email"
-            name="email"
-            placeholder="Enter Email"
-            className=" w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
-          /> */}
         </div>
         <div className="flex justify-center mx-auto w-full px-20">
           <TextField
@@ -45,12 +39,6 @@ const login = () => {
               label: { color: "white" },
             }}
           />
-          {/* <input
-            type="password"
-            name="password"
-            placeholder="***************"
-            className=" w-full mx-auto border-2 border-gray-400 rounded-md p-2 my-2"
-          /> */}
         </div>
 
         <div className="mx-auto mt-10">

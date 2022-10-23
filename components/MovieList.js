@@ -7,6 +7,7 @@ const MovieList = ({ movData }) => {
         {movData.map((movie, index) => (
           <MovieCard
             key={index}
+            Id={movie.Mov_Id}
             Title={movie.Mov_Name}
             Director={movie.Dir_Name}
             Character={movie.Mov_Cast_1}
@@ -14,7 +15,7 @@ const MovieList = ({ movData }) => {
             Language={movie.Mov_Lang}
             Age={movie.Mov_Age}
             Ratings={movie.Mov_Rate}
-            Link={movie.Mov_Link}
+            LinkM={movie.Mov_Link}
           />
         ))}
       </div>

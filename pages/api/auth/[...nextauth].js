@@ -19,5 +19,6 @@ export default NextAuth({
     }),
   ],
   signIn: "/adduser",
+
   secret: process.env.JWT_SECRET,
 });
