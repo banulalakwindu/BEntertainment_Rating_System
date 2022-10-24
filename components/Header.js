@@ -8,8 +8,10 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 const Header = () => {
+  const router = useRouter();
   const { data: session } = useSession();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -90,11 +92,14 @@ const Header = () => {
             transformOrigin={{ horizontal: "right", vertical: "top" }}
             anchorOrigin={{ horizontal: "left", vertical: "bottom" }}
           >
-            <MenuItem>
-              <a href="/account" className="flex">
-                <HiUserCircle className="h-5 w-5 mt-0.5 mr-3" />
-                <h1>Profile</h1>
-              </a>
+            <MenuItem
+              onClick={() => {
+                session ? router.push("/account") : router.push("/login");
+              }}
+              className="flex"
+            >
+              <HiUserCircle className="h-5 w-5 mt-0.5 mr-3" />
+              <h1>Profile</h1>
             </MenuItem>
             <MenuItem onClick={() => signOut()}>
               <GoSignOut className="h-5 w-5 mt-0.5 mr-2 ml-1" />

@@ -31,14 +31,14 @@ const Usertable = ({ userData }) => {
           <tbody className={styles.tbody}>
             {userData.map((uData, index) => (
               <tr key={index}>
-                <th className={styles.th}>{uData.User_Id}</th>
-                <td className={styles.th}>{uData.User_Name}</td>
-                <td className={styles.th}>{uData.User_Country}</td>
-                <td className={styles.th}>{uData.User_Email}</td>
-                <td className={styles.th}>{uData.User_Link}</td>
-                <td className={styles.th}>{uData.User_Dob}</td>
+                <th className={styles.th}>{uData.id}</th>
+                <td className={styles.th}>{uData.name}</td>
+                <td className={styles.th}>{uData.country}</td>
+                <td className={styles.th}>{uData.email}</td>
+                <td className={styles.th}>{uData.image}</td>
+                <td className={styles.th}>{uData.dob}</td>
                 <td className="flex flex-col px-5 py-3">
-                  <Link href={`/user/${uData.User_Id}`}>
+                  <Link href={`/user/${uData.email}`}>
                     <button className="rounded-md bg-green-800 my-2 text-white py-1">
                       Edit
                     </button>

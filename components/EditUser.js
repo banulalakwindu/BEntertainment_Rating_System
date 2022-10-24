@@ -8,11 +8,11 @@ const EditUser = ({ updateData }) => {
   console.log("updateData", updateData);
   const router = useRouter();
   const [addUser, setUser] = useState({
-    User_Name: "",
-    User_Country: "",
-    User_Email: "",
-    User_Link: "",
-    User_Dob: "",
+    name: "",
+    country: "",
+    email: "",
+    image: "",
+    dob: "",
   });
   useEffect(() => {
     setUser(updateData[0]);
@@ -20,16 +20,16 @@ const EditUser = ({ updateData }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     let data = await axios.put(
-      `http://localhost:3000/api/user/${updateData[0].User_Id}`,
+      `http://localhost:3000/api/user/${updateData[0].email}`,
       addUser
     );
     if (data.data) router.push("/user");
     setUser({
-      User_Name: "",
-      User_Country: "",
-      User_Email: "",
-      User_Link: "",
-      User_Dob: "",
+      name: "",
+      country: "",
+      email: "",
+      image: "",
+      dob: "",
     });
     alert("User Updated Successfully");
   };
@@ -45,11 +45,33 @@ const EditUser = ({ updateData }) => {
         <h1 className="mx-auto text-xl mb-5 topic">Edit User</h1>
         <div className="flex justify-center mx-auto w-full px-20">
           <TextField
+            disabled
             type="text"
-            name="User_Name"
+            name="email"
             onChange={handleChange}
-            value={addUser.User_Name}
-            label="Enter Username"
+            value={addUser.email}
+            label="You Can't change Email"
+            title="You Can't change Email"
+            sx={{
+              disabled: { color: "white" },
+
+              color: "white",
+
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
+          />
+        </div>
+        <div className="flex justify-center mx-auto w-full px-20">
+          <TextField
+            type="text"
+            name="name"
+            onChange={handleChange}
+            value={addUser.name}
+            label="Enter User Name"
             sx={{
               input: { color: "white" },
               label: { color: "white" },
@@ -63,9 +85,9 @@ const EditUser = ({ updateData }) => {
         <div className="flex justify-center mx-auto w-full px-20">
           <TextField
             type="text"
-            name="User_Country"
+            name="country"
             onChange={handleChange}
-            value={addUser.User_Country}
+            value={addUser.country}
             label="Enter Country"
             sx={{
               input: { color: "white" },
@@ -77,29 +99,13 @@ const EditUser = ({ updateData }) => {
             className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
+
         <div className="flex justify-center mx-auto w-full px-20">
           <TextField
             type="text"
-            name="User_Email"
+            name="image"
             onChange={handleChange}
-            value={addUser.User_Email}
-            label="Enter Email"
-            sx={{
-              input: { color: "white" },
-              label: { color: "white" },
-              fieldset: {
-                backgroundColor: "rgba(255, 255, 255, 0.1)",
-              },
-            }}
-            className=" md:w-2/4 w-full mx-auto my-1"
-          />
-        </div>
-        <div className="flex justify-center mx-auto w-full px-20">
-          <TextField
-            type="text"
-            name="User_Link"
-            onChange={handleChange}
-            value={addUser.User_Link}
+            value={addUser.image}
             label="Enter User Image Link"
             multiline
             sx={{
@@ -116,10 +122,10 @@ const EditUser = ({ updateData }) => {
         <div className="flex justify-center mx-auto w-full px-20">
           <TextField
             type="text"
-            name="User_Dob"
+            name="dob"
             onChange={handleChange}
-            value={addUser.User_Dob}
-            clabel="Enter Birthday"
+            value={addUser.dob}
+            label="Enter Birthday"
             sx={{
               input: { color: "white" },
               label: { color: "white" },

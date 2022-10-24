@@ -31,6 +31,7 @@ const login = () => {
         <div className="flex justify-center mx-auto w-full px-20">
           <TextField
             className="w-full"
+            type="password"
             id="filled-basic"
             label="Enter Password"
             variant="filled"
@@ -42,7 +43,12 @@ const login = () => {
         </div>
 
         <div className="mx-auto mt-10">
-          <Button size="large" className="bg-[#1976D2]" variant="contained">
+          <Button
+            size="large"
+            className="bg-[#1976D2]"
+            variant="contained"
+            onClick={() => dbCheck()}
+          >
             Submit
           </Button>
         </div>
@@ -56,7 +62,7 @@ const login = () => {
               alt=""
               height={50}
               width={50}
-              onClick={() => signIn("facebook")}
+              onClick={() => signIn()}
               className="rounded-full bg-white p-1 m-2"
             />
           </div>
@@ -66,7 +72,7 @@ const login = () => {
               alt=""
               height={50}
               width={50}
-              onClick={() => signIn("github")}
+              onClick={() => signIn("github", { callbackUrl: "/" })}
               className="rounded-full m-2"
             />
           </div>

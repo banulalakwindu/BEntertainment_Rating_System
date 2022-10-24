@@ -2,18 +2,18 @@ import { excuteQuery } from "../../config/db";
 
 const getAllUsers = async (req, res) => {
   try {
-    let userData = await excuteQuery("SELECT * FROM ratingdb.user_t;", []);
+    let userData = await excuteQuery("SELECT * FROM ratingdb.users;", []);
     res.send(userData);
   } catch (error) {
     res.status(500).json(error);
   }
 };
 
-const getUserById = async (req, res) => {
+const getUserByEmail = async (req, res) => {
   let id = req.query.id;
   try {
     let userData = await excuteQuery(
-      `SELECT * FROM ratingdb.user_t WHERE User_Id =${id}`,
+      `SELECT * FROM ratingdb.users WHERE email = "${id}"`,
       []
     );
     res.status(200).json(userData);
@@ -22,12 +22,12 @@ const getUserById = async (req, res) => {
   }
 };
 
-const deleteUserById = async (req, res) => {
+const deleteUserByEmail = async (req, res) => {
   let id = req.query.id;
   try {
     let userData = await excuteQuery(
-      `DELETE FROM ratingdb.user_t WHERE user_id =${id}`,
-      [id]
+      `DELETE FROM ratingdb.users WHERE email ="${id}"`,
+      []
     );
     res.status(200).json(userData);
   } catch (error) {
@@ -59,16 +59,16 @@ const saveUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
   let id = req.query.id;
-  const { User_Name, User_Country, User_Email, User_Link, User_Dob } = req.body;
+  const { name, email, image, country, dob } = req.body;
   try {
     let userData = await excuteQuery(
-      `select User_Id, User_Name, User_Country, User_Email, User_Link, DATE_FORMAT(User_Dob, "%Y-%m-%d") as User_Dob from ratingdb.user_t where User_Id=?`,
+      `select * from ratingdb.users where email=?`,
       [id]
     );
     if (userData.length > 0) {
       userData = await excuteQuery(
-        "UPDATE ratingdb.user_t SET User_Name=?, User_Country=?, User_Email=?, User_Link=?, User_Dob=? WHERE User_Id=?",
-        [User_Name, User_Country, User_Email, User_Link, User_Dob, id]
+        `UPDATE ratingdb.users SET name="${name}", image="${image}", country="${country}", dob="${dob}" WHERE email="${email}"`,
+        []
       );
       res.status(200).json(userData);
     } else {
@@ -79,4 +79,4 @@ const updateUser = async (req, res) => {
   }
 };
 
-export { getAllUsers, getUserById, deleteUserById, saveUser, updateUser };
+export { getAllUsers, getUserByEmail, deleteUserByEmail, saveUser, updateUser };

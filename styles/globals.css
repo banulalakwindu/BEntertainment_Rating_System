@@ -55,3 +55,12 @@ textarea {
 .under {
   border-bottom: solid white 2px;
 }
+
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-disabled {
+  color: rgb(255, 0, 0) !important;
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input.Mui-disabled {
+  color: rgba(255, 255, 255, 1) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 1) !important;
+}

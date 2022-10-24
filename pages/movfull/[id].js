@@ -3,8 +3,10 @@ import Header from "../../components/Header";
 import Head from "next/head";
 import { Rating } from "@mui/material";
 import TextField from "@mui/material/TextField";
+import { useSession } from "next-auth/react";
 
 const movrend = ({ movie }) => {
+  const { data: session } = useSession();
   return (
     <div>
       <Head>
@@ -102,32 +104,43 @@ const movrend = ({ movie }) => {
             </span>{" "}
             Movie
           </p>
-          <div className="mb-10">
-            <h1>Place Your Rating : </h1>
-            <Rating
-              name="half-rating"
-              defaultValue={movie[0].Mov_Rate}
-              precision={0.5}
-              size="large"
-            />
-          </div>
-          <div className="flex justify-center mx-auto w-full">
-            <TextField
-              type="text"
-              name="User_Comment"
-              label="Enter Your Idea about this Movie"
-              multiline
-              sx={{
-                input: { color: "white" },
-                label: { color: "white" },
-                fieldset: {
-                  backgroundColor: "rgba(255, 255, 255, 0.1)",
-                },
-                textArea: { color: "white" },
-              }}
-              className="w-full mx-auto my-1 "
-            />
-          </div>
+          {session ? (
+            <div>
+              <div className="mb-10">
+                <h1>Place Your Rating : </h1>
+                <Rating
+                  name="half-rating"
+                  defaultValue={movie[0].Mov_Rate}
+                  precision={0.5}
+                  size="large"
+                />
+              </div>
+              <div className="flex justify-center mx-auto w-full">
+                <TextField
+                  type="text"
+                  name="User_Comment"
+                  label="Enter Your Idea about this Movie"
+                  multiline
+                  sx={{
+                    input: { color: "white" },
+                    label: { color: "white" },
+                    fieldset: {
+                      backgroundColor: "rgba(255, 255, 255, 0.1)",
+                    },
+                    textArea: { color: "white" },
+                  }}
+                  className="w-full mx-auto my-1 "
+                />
+              </div>
+            </div>
+          ) : (
+            <h1>
+              <a className="text-sky-600 underline" href="/login">
+                Login
+              </a>{" "}
+              to place your rating
+            </h1>
+          )}
         </div>
       </div>
     </div>
