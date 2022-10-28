@@ -3,7 +3,7 @@ import { excuteQuery } from "../../config/db";
 const getAllMovies = async (req, res) => {
   try {
     let movieData = await excuteQuery(
-      "select * from ratingdb.movie join director on Mov_Dir = Dir_Id join cast_t on Mov_Cast_1 = Cast_Id ;",
+      "SELECT *, GROUP_CONCAT(Act_Name order by Mov_Id separator', ') as Act_List FROM ratingdb.movie left join directing on movie.Mov_Id=directing.Dir_Mov left join director on directing.Dir_Dir=director.Dir_Id left join cast_t on movie.Mov_Id = cast_t.Cast_Mov left join actor on cast_t.Cast_Act=actor.Act_Id group by movie.Mov_Id order by Mov_Id desc;",
       []
     );
     res.send(movieData);
@@ -16,7 +16,7 @@ const getMovieById = async (req, res) => {
   let id = req.query.id;
   try {
     let movieData = await excuteQuery(
-      `select * from ratingdb.movie join director on Mov_Dir = Dir_Id join cast_t on Mov_Cast_1 = Cast_Id WHERE Mov_Id =${id}`,
+      `SELECT *, GROUP_CONCAT(Act_Name order by Mov_Id separator', ') as Act_List FROM ratingdb.movie left join directing on movie.Mov_Id=directing.Dir_Mov left join director on directing.Dir_Dir=director.Dir_Id left join cast_t on movie.Mov_Id = cast_t.Cast_Mov left join actor on cast_t.Cast_Act=actor.Act_Id WHERE Mov_Id =${id} group by movie.Mov_Id`,
       []
     );
     res.status(200).json(movieData);
@@ -39,6 +39,7 @@ const deleteMovieById = async (req, res) => {
 };
 
 const saveMovie = async (req, res) => {
+  let Mov_Id = req.body.Mov_Id;
   let Mov_Name = req.body.Mov_Name;
   let Mov_Year = req.body.Mov_Year;
   let Mov_Time = req.body.Mov_Time;
@@ -52,10 +53,9 @@ const saveMovie = async (req, res) => {
   let Mov_Cast_2 = req.body.Mov_Cast_2;
   let Mov_Cast_3 = req.body.Mov_Cast_3;
   let Mov_Dir = req.body.Mov_Dir;
-  let Mov_Rate = req.body.Mov_Rate;
   try {
     let movieData = await excuteQuery(
-      "insert into movie (`Mov_Name`, `Mov_Year`, `Mov_Time`, `Mov_Lang`, `Mov_Country`, `Mov_Age`, `Mov_Desc`, `Mov_Type`, `Mov_Link`, `Mov_Cast_1`, `Mov_Cast_2`, `Mov_Cast_3`, `Mov_Dir`, `Mov_Rate`) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+      "insert into movie (`Mov_Name`, `Mov_Year`, `Mov_Time`, `Mov_Lang`, `Mov_Country`, `Mov_Age`, `Mov_Desc`, `Mov_Type`, `Mov_Link`) values (?,?,?,?,?,?,?,?,?);",
       [
         Mov_Name,
         Mov_Year,
@@ -66,18 +66,27 @@ const saveMovie = async (req, res) => {
         Mov_Desc,
         Mov_Type,
         Mov_Link,
-        Mov_Cast_1,
-        Mov_Cast_2,
-        Mov_Cast_3,
-        Mov_Dir,
-        Mov_Rate,
       ]
     );
-    movieData = await excuteQuery(
-      `SELECT * FROM ratingdb.movie where Mov_Id=${movieData.insertId}`,
-      []
+    let movieData1 = await excuteQuery(
+      "insert into cast_t (`Cast_Mov`, `Cast_Act`) values (?,?);",
+      [Mov_Id, Mov_Cast_1]
     );
-    res.status(200).json(movieData);
+    let movieData2 = await excuteQuery(
+      "insert into cast_t (`Cast_Mov`, `Cast_Act`) values (?,?);",
+      [Mov_Id, Mov_Cast_2]
+    );
+    let movieData3 = await excuteQuery(
+      "insert into cast_t (`Cast_Mov`, `Cast_Act`) values (?,?);",
+      [Mov_Id, Mov_Cast_3]
+    );
+    let movieData4 = await excuteQuery(
+      "insert into directing (`Dir_Mov`, `Dir_Dir`) values (?,?);",
+      [Mov_Id, Mov_Dir]
+    );
+    res
+      .status(200)
+      .json(movieData, movieData1, movieData2, movieData3, movieData4);
   } catch (error) {
     res.status(500).json(error);
   }

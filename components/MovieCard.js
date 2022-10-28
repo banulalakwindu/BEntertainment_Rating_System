@@ -1,21 +1,11 @@
 import { StarIcon } from "@heroicons/react/solid";
 import { useRouter } from "../node_modules/next/router";
 
-const MovieCard = ({
-  Id,
-  Title,
-  Director,
-  Character,
-  Year,
-  Language,
-  Age,
-  Ratings,
-  LinkM,
-}) => {
+const MovieCard = ({ Id, Title, Year, Language, Age, Ratings, LinkM }) => {
   const router = useRouter();
   return (
     <div onClick={() => router.push(`/movfull/${Id}`)}>
-      <div className="mx-auto h-80 w-56 bg-white overflow-hidden relative rounded-xl border-2 border-slate-200 transition duration-300 ease-in-out hover:border-sky-700 group">
+      <div className="mx-auto h-80 w-56 bg-white overflow-hidden relative rounded-md border-2 border-slate-200 transition duration-300 ease-in-out hover:border-sky-700 group">
         <img
           priority="true"
           src={LinkM}
@@ -31,9 +21,6 @@ const MovieCard = ({
         <div className="absolute z-10 top-28 right-0 h-72 w-56 bg-gradient-to-t from-black transition duration-300 ease-in-out group-hover:-translate-y-12"></div>
         <p className="absolute z-10 bottom-24 left-4 font-bold text-2xl capitalize text-white">
           {Title}
-        </p>
-        <p className="absolute z-10 bottom-16 left-4 text-md text-white">
-          {Director}
         </p>
         <p className="absolute z-10 bottom-12 left-4 text-md text-white">
           {Language}

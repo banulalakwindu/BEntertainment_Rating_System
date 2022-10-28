@@ -13,7 +13,7 @@ const getUserByEmail = async (req, res) => {
   let id = req.query.id;
   try {
     let userData = await excuteQuery(
-      `SELECT * FROM ratingdb.users WHERE email = "${id}"`,
+      `SELECT * FROM ratingdb.user_t WHERE email = "${id}"`,
       []
     );
     res.status(200).json(userData);

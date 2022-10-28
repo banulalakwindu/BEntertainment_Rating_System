@@ -5,7 +5,9 @@ import Header from "../components/Header";
 import Head from "next/head";
 import { TextField, Button } from "@mui/material";
 
-function AddMovie() {
+const AddMovie = ({ attrib }) => {
+  console.log(attrib[0].Mov_Id);
+
   const router = useRouter();
   const [addMovie, setMovie] = useState({
     Mov_Name: "",
@@ -318,6 +320,6 @@ function AddMovie() {
       </form>
     </div>
   );
-}
+};
 
 export default AddMovie;

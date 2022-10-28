@@ -65,14 +65,13 @@ const movrend = ({ movie }) => {
               <span className="text-xl font-bold text-yellow-300 not-italic">
                 Directed by :
               </span>
-              &#8195;{movie[0].Mov_Dir}
+              &#8195;{movie[0].Dir_Name}
             </p>
             <p className="text-md my-2 italic">
               <span className="text-xl font-bold text-yellow-300 not-italic">
                 Starring :
               </span>
-              &#8195;{movie[0].Mov_Cast_1},{movie[0].Mov_Cast_2},
-              {movie[0].Mov_Cast_3}
+              &#8195;{movie[0].Act_List}
             </p>
             <p className="text-md my-2 italic">
               <span className="text-xl font-bold text-yellow-300 not-italic">
