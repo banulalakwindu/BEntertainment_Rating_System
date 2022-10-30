@@ -27,6 +27,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
+    "react-star-ratings": "^2.3.0",
+    "react-stars": "^2.2.5",
     "typeorm": "^0.3.7",
     "typeorm-naming-strategies": "^4.1.0"
   },

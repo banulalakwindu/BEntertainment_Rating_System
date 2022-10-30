@@ -27,7 +27,7 @@ const MovieCard = ({ Id, Title, Year, Language, Age, Ratings, LinkM }) => {
         </p>
         <div className="absolute z-10 bottom-2 right-2 text-yellow-400 flex">
           <StarIcon className=" h-6 w-6 " />
-          <p>{Ratings}</p>
+          <p>{Ratings == null ? 10 : Ratings}</p>
         </div>
         <p className="absolute z-10 bottom-2 left-2 text-md text-yellow-400">
           {Year}

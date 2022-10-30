@@ -3,7 +3,7 @@ import { excuteQuery } from "../../config/db";
 const getAllMovies = async (req, res) => {
   try {
     let movieData = await excuteQuery(
-      "SELECT *, GROUP_CONCAT(Act_Name order by Mov_Id separator', ') as Act_List FROM ratingdb.movie left join directing on movie.Mov_Id=directing.Dir_Mov left join director on directing.Dir_Dir=director.Dir_Id left join cast_t on movie.Mov_Id = cast_t.Cast_Mov left join actor on cast_t.Cast_Act=actor.Act_Id group by movie.Mov_Id order by Mov_Id desc;",
+      "SELECT *, GROUP_CONCAT(Act_Name order by Mov_Id separator', ') as Act_List, (select avg(Rate_Size) from ratingdb.rate_t where Rate_Mov = Mov_Id) as Mov_Rate FROM ratingdb.movie left join directing on movie.Mov_Id=directing.Dir_Mov left join director on directing.Dir_Dir=director.Dir_Id left join cast_t on movie.Mov_Id = cast_t.Cast_Mov left join actor on cast_t.Cast_Act=actor.Act_Id group by movie.Mov_Id order by Mov_Id desc;",
       []
     );
     res.send(movieData);
@@ -16,7 +16,7 @@ const getMovieById = async (req, res) => {
   let id = req.query.id;
   try {
     let movieData = await excuteQuery(
-      `SELECT *, GROUP_CONCAT(Act_Name order by Mov_Id separator', ') as Act_List FROM ratingdb.movie left join directing on movie.Mov_Id=directing.Dir_Mov left join director on directing.Dir_Dir=director.Dir_Id left join cast_t on movie.Mov_Id = cast_t.Cast_Mov left join actor on cast_t.Cast_Act=actor.Act_Id WHERE Mov_Id =${id} group by movie.Mov_Id`,
+      `SELECT *, GROUP_CONCAT(Act_Name order by Mov_Id separator', ') as Act_List, (select avg(Rate_Size) from ratingdb.rate_t where Rate_Mov = ${id}) as Mov_Rate FROM ratingdb.movie left join directing on movie.Mov_Id=directing.Dir_Mov left join director on directing.Dir_Dir=director.Dir_Id left join cast_t on movie.Mov_Id = cast_t.Cast_Mov left join actor on cast_t.Cast_Act=actor.Act_Id WHERE Mov_Id =${id} group by movie.Mov_Id`,
       []
     );
     res.status(200).json(movieData);
@@ -108,7 +108,6 @@ const updateMovie = async (req, res) => {
     Mov_Cast_2,
     Mov_Cast_3,
     Mov_Dir,
-    Mov_Rate,
   } = req.body;
   try {
     let movieData = await excuteQuery(
@@ -117,7 +116,7 @@ const updateMovie = async (req, res) => {
     );
     if (movieData.length > 0) {
       movieData = await excuteQuery(
-        "UPDATE ratingdb.movie SET Mov_Name=?, Mov_Year=?, Mov_Time=?, Mov_Lang=?, Mov_Country=?, Mov_Age=?, Mov_Desc=?, Mov_Type=?, Mov_Link=?, Mov_Cast_1=?, Mov_Cast_2=?, Mov_Cast_3=?, Mov_Dir=?, Mov_Rate=? WHERE Mov_Id=?",
+        "UPDATE ratingdb.movie SET Mov_Name=?, Mov_Year=?, Mov_Time=?, Mov_Lang=?, Mov_Country=?, Mov_Age=?, Mov_Desc=?, Mov_Type=?, Mov_Link=? WHERE Mov_Id=?",
         [
           Mov_Name,
           Mov_Year,
@@ -128,15 +127,44 @@ const updateMovie = async (req, res) => {
           Mov_Desc,
           Mov_Type,
           Mov_Link,
-          Mov_Cast_1,
-          Mov_Cast_2,
-          Mov_Cast_3,
-          Mov_Dir,
-          Mov_Rate,
           id,
         ]
       );
-      res.status(200).json(movieData);
+      let movieData1 = await excuteQuery(
+        "delete from cast_t where Cast_Mov=?;",
+        [id]
+      );
+      let movieData2 = await excuteQuery(
+        "delete from directing where Dir_Mov=?;",
+        [id]
+      );
+      let movieData3 = await excuteQuery(
+        "insert into cast_t (`Cast_Mov`, `Cast_Act`) values (?,?);",
+        [id, Mov_Cast_1]
+      );
+      let movieData4 = await excuteQuery(
+        "insert into cast_t (`Cast_Mov`, `Cast_Act`) values (?,?);",
+        [id, Mov_Cast_2]
+      );
+      let movieData5 = await excuteQuery(
+        "insert into cast_t (`Cast_Mov`, `Cast_Act`) values (?,?);",
+        [id, Mov_Cast_3]
+      );
+      let movieData6 = await excuteQuery(
+        "insert into directing (`Dir_Mov`, `Dir_Dir`) values (?,?);",
+        [id, Mov_Dir]
+      );
+      res
+        .status(200)
+        .json(
+          movieData,
+          movieData1,
+          movieData2,
+          movieData3,
+          movieData4,
+          movieData5,
+          movieData6
+        );
     } else {
       res.status(404).json(`Movie to id=${id} not found`);
     }

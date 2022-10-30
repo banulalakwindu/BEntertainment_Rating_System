@@ -6,24 +6,9 @@ import Head from "next/head";
 import { TextField, Button } from "@mui/material";
 
 const AddMovie = ({ attrib }) => {
-  console.log(attrib[0].Mov_Id);
-
   const router = useRouter();
   const [addMovie, setMovie] = useState({
-    Mov_Name: "",
-    Mov_Year: "",
-    Mov_Time: "",
-    Mov_Lang: "",
-    Mov_Country: "",
-    Mov_Age: "",
-    Mov_Desc: "",
-    Mov_Type: "",
-    Mov_Link: "",
-    Mov_Cast_1: "",
-    Mov_Cast_2: "",
-    Mov_Cast_3: "",
-    Mov_Dir: "",
-    Mov_Rate: "",
+    Mov_Id: attrib[0].Mov_Id + 1,
   });
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -33,6 +18,7 @@ const AddMovie = ({ attrib }) => {
     );
     if (data.data) router.push("/addmovie");
     setMovie({
+      Mov_Id: attrib[0].Mov_Id + 1,
       Mov_Name: "",
       Mov_Year: "",
       Mov_Time: "",
@@ -46,7 +32,6 @@ const AddMovie = ({ attrib }) => {
       Mov_Cast_2: "",
       Mov_Cast_3: "",
       Mov_Dir: "",
-      Mov_Rate: "",
     });
     alert("Movie Added Successfully");
   };
@@ -65,6 +50,28 @@ const AddMovie = ({ attrib }) => {
       <Header />
       <form onSubmit={onSubmit} className="flex flex-col mt-10">
         <h1 className="mx-auto text-xl mb-5 topic">Add Movie</h1>
+        <div className="flex justify-center mx-auto w-full px-20">
+          <TextField
+            disabled
+            type="text"
+            name="Mov_Id"
+            onChange={handleChange}
+            value={addMovie.Mov_Id}
+            label="You Can't change Movie Id"
+            title="You Can't change Movie Id"
+            sx={{
+              disabled: { color: "white" },
+
+              color: "white",
+
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
+          />
+        </div>
         <div className="flex justify-center mx-auto w-full px-20">
           <TextField
             type="text"
@@ -173,7 +180,7 @@ const AddMovie = ({ attrib }) => {
             name="Mov_Desc"
             onChange={handleChange}
             value={addMovie.Mov_Desc}
-            label="Enter Movie Storline"
+            label="Enter Movie Storyline"
             multiline
             sx={{
               input: { color: "white" },
@@ -280,23 +287,6 @@ const AddMovie = ({ attrib }) => {
             onChange={handleChange}
             value={addMovie.Mov_Dir}
             label="Enter Movie Director"
-            sx={{
-              input: { color: "white" },
-              label: { color: "white" },
-              fieldset: {
-                backgroundColor: "rgba(255, 255, 255, 0.1)",
-              },
-            }}
-            className=" md:w-2/4 w-full mx-auto my-1"
-          />
-        </div>
-        <div className="flex justify-center mx-auto w-full px-20">
-          <TextField
-            type="text"
-            name="Mov_Rate"
-            onChange={handleChange}
-            value={addMovie.Mov_Rate}
-            label="Enter Movie Rate"
             sx={{
               input: { color: "white" },
               label: { color: "white" },

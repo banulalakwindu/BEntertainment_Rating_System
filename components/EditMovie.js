@@ -7,6 +7,7 @@ import { Button, TextField } from "@mui/material";
 const EditMovie = ({ updateData }) => {
   const router = useRouter();
   const [addMovie, setMovie] = useState({
+    Mov_Id: "",
     Mov_Name: "",
     Mov_Year: "",
     Mov_Time: "",
@@ -20,7 +21,6 @@ const EditMovie = ({ updateData }) => {
     Mov_Cast_2: "",
     Mov_Cast_3: "",
     Mov_Dir: "",
-    Mov_Rate: "",
   });
   useEffect(() => {
     setMovie(updateData[0]);
@@ -33,6 +33,7 @@ const EditMovie = ({ updateData }) => {
     );
     if (data.data) router.push("/movie");
     setMovie({
+      Mov_Id: "",
       Mov_Name: "",
       Mov_Year: "",
       Mov_Time: "",
@@ -46,7 +47,6 @@ const EditMovie = ({ updateData }) => {
       Mov_Cast_2: "",
       Mov_Cast_3: "",
       Mov_Dir: "",
-      Mov_Rate: "",
     });
     alert("Movie Updated Successfully");
   };
@@ -60,6 +60,28 @@ const EditMovie = ({ updateData }) => {
       <Header />
       <form onSubmit={onSubmit} className="flex flex-col mt-10">
         <h1 className="mx-auto text-xl mb-5 topic">Edit Movie</h1>
+        <div className="flex justify-center mx-auto w-full px-20">
+          <TextField
+            disabled
+            type="text"
+            name="Mov_Id"
+            onChange={handleChange}
+            value={addMovie.Mov_Id}
+            label="You Can't change Movie Id"
+            title="You Can't change Movie Id"
+            sx={{
+              disabled: { color: "white" },
+
+              color: "white",
+
+              label: { color: "white" },
+              fieldset: {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            }}
+            className=" md:w-2/4 w-full mx-auto my-1"
+          />
+        </div>
         <div className="flex justify-center mx-auto w-full px-20">
           <TextField
             type="text"
@@ -287,24 +309,6 @@ const EditMovie = ({ updateData }) => {
             className=" md:w-2/4 w-full mx-auto my-1"
           />
         </div>
-        <div className="flex justify-center mx-auto w-full px-20">
-          <TextField
-            type="text"
-            name="Mov_Rate"
-            onChange={handleChange}
-            value={addMovie.Mov_Rate}
-            label="Enter Movie Rate"
-            sx={{
-              input: { color: "white" },
-              label: { color: "white" },
-              fieldset: {
-                backgroundColor: "rgba(255, 255, 255, 0.1)",
-              },
-            }}
-            className=" md:w-2/4 w-full mx-auto my-1"
-          />
-        </div>
-
         <div className="mx-auto mt-3 mb-5">
           <Button
             type="submit"

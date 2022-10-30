@@ -1,11 +1,15 @@
 import React from "react";
 import Header from "../../components/Header";
 import Head from "next/head";
-import { Rating } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { useSession } from "next-auth/react";
+import { useState } from "react";
+import Rating from "@mui/material/Rating";
 
 const movrend = ({ movie }) => {
+  const ra = parseStr(movie[0].Mov_Rate);
+  console.log(ra);
+  const [value, setValue] = useState(ra);
   const { data: session } = useSession();
   return (
     <div>
@@ -80,7 +84,7 @@ const movrend = ({ movie }) => {
               &#8195;
               <Rating
                 name="half-rating-read"
-                defaultValue={movie[0].Mov_Rate}
+                value={value}
                 precision={0.5}
                 readOnly
                 className="under"
@@ -109,7 +113,7 @@ const movrend = ({ movie }) => {
                 <h1>Place Your Rating : </h1>
                 <Rating
                   name="half-rating"
-                  defaultValue={movie[0].Mov_Rate}
+                  value={2}
                   precision={0.5}
                   size="large"
                 />
