@@ -30,9 +30,7 @@ const Movietable = ({ movieData }) => {
                 <th className={styles.th}>Movie Description</th>
                 <th className={styles.th}>Movie Type</th>
                 <th className={styles.th}>Movie Link</th>
-                <th className={styles.th}>Movie Cast 1</th>
-                <th className={styles.th}>Movie Cast 2</th>
-                <th className={styles.th}>Movie Cast 3</th>
+                <th className={styles.th}>Movie Actor Lsit</th>
                 <th className={styles.th}>Movie Director</th>
                 <th className={styles.th}>Movie Rate</th>
                 <th className={styles.th}>Actions</th>
@@ -51,11 +49,11 @@ const Movietable = ({ movieData }) => {
                   <td className={styles.th}>{mData.Mov_Desc}</td>
                   <td className={styles.th}>{mData.Mov_Type}</td>
                   <td className={styles.th}>{mData.Mov_Link}</td>
-                  <td className={styles.th}>{mData.Mov_Cast_1}</td>
-                  <td className={styles.th}>{mData.Mov_Cast_2}</td>
-                  <td className={styles.th}>{mData.Mov_Cast_3}</td>
-                  <td className={styles.th}>{mData.Mov_Dir}</td>
-                  <td className={styles.th}>{mData.Mov_Rate}</td>
+                  <td className={styles.th}>{mData.Act_List}</td>
+                  <td className={styles.th}>{mData.Dir_Name}</td>
+                  <td className={styles.th}>
+                    {mData.Mov_Rate ? mData.Mov_Rate : 10}
+                  </td>
                   <td className="flex flex-col px-5 py-3">
                     <Link href={`/movie/${mData.Mov_Id}`}>
                       <button className="rounded-md bg-green-800 my-2 text-white py-1">

@@ -23,7 +23,7 @@ const Header = () => {
   };
   return (
     <div className="shadow-md sticky top-0 z-50 ">
-      <div className="flex justify-between items-center bg-gradient-to-r from-sky-900 to-gray-900 border-b-8  border-b-sky-700">
+      <div className="flex justify-between items-center bg-gradient-to-r from-gray-800 to-gray-900">
         <Link href={"/"}>
           <div className="flex my-4 ml-4">
             <Image src="/favicon.ico" width={40} height={40} layout="fixed" />

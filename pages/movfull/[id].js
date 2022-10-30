@@ -3,14 +3,43 @@ import Header from "../../components/Header";
 import Head from "next/head";
 import TextField from "@mui/material/TextField";
 import { useSession } from "next-auth/react";
-import { useState } from "react";
 import Rating from "@mui/material/Rating";
+import { StarIcon } from "@heroicons/react/solid";
+import { Button } from "@mui/material";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const movrend = ({ movie }) => {
-  const ra = parseStr(movie[0].Mov_Rate);
-  console.log(ra);
-  const [value, setValue] = useState(ra);
   const { data: session } = useSession();
+  console.log(session);
+  const router = useRouter();
+  // const [addRate, setRate] = useState({
+  //   Rate_Mov: "",
+  //   Rate_User: "",
+  // });
+  // useEffect(() => {
+  //   setRate(updateData[0]);
+  // }, [updateData]);
+  // const onSubmit = async (e) => {
+  //   e.preventDefault();
+  //   let data = await axios.put(
+  //     `http://localhost:3000/api/rate/${updateData[0].Rate_Mov}`,
+  //     addRate
+  //   );
+  //   if (data.data) router.push("/rate");
+  //   setMovie({
+  //     Rate_Mov: "",
+  //     Rate_User: "",
+  //   });
+  //   alert("Rate Updated Successfully");
+  // };
+
+  // const handleChange = (e) => {
+  //   const value = e.target.value;
+  //   setMovie({ ...addRate, [e.target.name]: value });
+  // };
+
   return (
     <div>
       <Head>
@@ -77,27 +106,22 @@ const movrend = ({ movie }) => {
               </span>
               &#8195;{movie[0].Act_List}
             </p>
-            <p className="text-md my-2 italic">
+            <div className="text-md my-2 italic flex">
               <span className="text-xl font-bold text-yellow-300 not-italic">
                 Rating :
               </span>
               &#8195;
-              <Rating
-                name="half-rating-read"
-                value={value}
-                precision={0.5}
-                readOnly
-                className="under"
-              />
-            </p>
+              <p>{movie[0].Mov_Rate ? movie[0].Mov_Rate : 10}</p>
+              <StarIcon className=" h-6 w-6 text-yellow-400 ml-1" />
+            </div>
           </div>
         </div>
-        <p className="flex flex-col my-2 text-xl italic mx-20 text-justify pb-10 under">
-          <span className="font-bold text-yellow-300 not-italic my-2">
+        <div className="flex flex-col my-2 text-xl italic mx-20 text-justify pb-10 under">
+          <p className="font-bold text-yellow-300 not-italic my-2">
             Storyline :
-          </span>
-          {movie[0].Mov_Desc}
-        </p>
+          </p>
+          <p>{movie[0].Mov_Desc}</p>
+        </div>
         <div className="flex flex-col text-xl my-20 mx-20 h-screen text-justify ">
           <h1 className="mt-20 topic">User Rating</h1>
           <p className="mt-5 mb-10">
@@ -113,7 +137,7 @@ const movrend = ({ movie }) => {
                 <h1>Place Your Rating : </h1>
                 <Rating
                   name="half-rating"
-                  value={2}
+                  value={5}
                   precision={0.5}
                   size="large"
                 />
@@ -132,9 +156,12 @@ const movrend = ({ movie }) => {
                     },
                     textArea: { color: "white" },
                   }}
-                  className="w-full mx-auto my-1 "
+                  className="w-full mx-auto my-1"
                 />
               </div>
+              <Button className="mt-5" href="/admin" variant="contained">
+                Submit
+              </Button>
             </div>
           ) : (
             <h1>
