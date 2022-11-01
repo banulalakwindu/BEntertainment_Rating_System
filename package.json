@@ -9,17 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.3.6",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@heroicons/react": "^1.0.6",
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.10",
     "@next-auth/typeorm-legacy-adapter": "^2.0.1",
-    "@prisma/client": "^4.5.0",
     "axios": "^1.1.3",
-    "boostrap": "^2.0.0",
-    "formik": "^2.2.9",
     "mysql": "^2.18.1",
     "next": "12.2.5",
     "next-auth": "^4.15.0",
@@ -27,8 +23,6 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
-    "react-star-ratings": "^2.3.0",
-    "react-stars": "^2.2.5",
     "typeorm": "^0.3.7",
     "typeorm-naming-strategies": "^4.1.0"
   },
@@ -39,8 +33,6 @@
     "eslint": "8.22.0",
     "eslint-config-next": "12.2.5",
     "postcss": "^8.4.16",
-    "prisma": "^4.5.0",
-    "tailwind-scrollbar": "^2.0.1",
     "tailwindcss": "^3.1.8"
   }
 }

@@ -1,9 +1,11 @@
 import React from "react";
 import { getSession, useSession, signOut } from "next-auth/react";
 import Header from "../components/Header";
+import { Button } from "@mui/material";
 
 const account = () => {
   const { data: session } = useSession();
+  console.log(session);
   return (
     <div>
       <Header />
@@ -17,31 +19,45 @@ const account = () => {
           }
           className="mx-auto bg-white p-1 rounded-full h-40 w-40"
         />
-        <div className="bg-gray-500 flex flex-col">
-          <div className="flex text-white justify-between">
-            <h1>Name : </h1>
-            <h1>{session ? session.user.name : "name"}</h1>
+        <div className="flex flex-col mx-10 border-2 border-gray-700 rounded-lg px-10 py-5 mt-10">
+          <div className="flex text-white my-3 ">
+            <h1 className="font-bold text-xl">Name : </h1>
+            <h1 className="text-yellow-500">
+              {" "}
+              &#8195;{session ? session.user.name : "name"}
+            </h1>
           </div>
-          <div className="flex text-white">
-            <h1>Email : </h1>
-            <h1>{session ? session.user.email : "email"}</h1>
+          <div className="flex text-white my-3">
+            <h1 className="font-bold text-xl">Email : </h1>
+            <h1 className="text-yellow-500">
+              {" "}
+              &#8195;{session ? session.user.email : "email"}
+            </h1>
           </div>
-          <div className="flex text-white">
-            <h1>Country : </h1>
-            <h1>-</h1>
+          <div className="flex text-white my-3">
+            <h1 className="font-bold text-xl">Country : </h1>
+            <h1 className="text-yellow-500"> &#8195;</h1>
           </div>
-          <div className="flex text-white">
-            <h1>User Image Link : </h1>
-            <h1>
+          <div className="flex text-white my-3">
+            <h1 className="font-bold text-xl">User Image Link : </h1>
+            <h1 className="text-yellow-500">
+              &#8195;
               {session
                 ? session.user.image
                 : "https://www.kindpng.com/picc/m/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png"}
             </h1>
           </div>
-          <div className="flex text-white">
-            <h1>User Birthday : </h1>
-            <h1>2000-01-05</h1>
+          <div className="flex text-white my-3">
+            <h1 className="font-bold text-xl">User Birthday : </h1>
+            <h1 className="text-yellow-500"> &#8195;2000-01-05</h1>
           </div>
+          <Button
+            className="mt-4 py-3"
+            href={session ? `/user/${session.user.email}` : "/login"}
+            variant="contained"
+          >
+            Update Me
+          </Button>
         </div>
       </div>
     </div>

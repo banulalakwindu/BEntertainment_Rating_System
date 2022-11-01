@@ -27,7 +27,7 @@ const Header = () => {
         <Link href={"/"}>
           <div className="flex my-4 ml-4">
             <Image src="/favicon.ico" width={40} height={40} layout="fixed" />
-            <p className="hidden sm:inline-block pl-4 text-white font-bold text-3xl capitalize">
+            <p className="hidden sm:inline-block pl-4 text-white font-bold text-3xl capitalize transition duration-300 ease-in-out hover:text-red-500 ">
               Entertainment
             </p>
           </div>
