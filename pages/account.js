@@ -59,6 +59,9 @@ const account = () => {
             Update Me
           </Button>
         </div>
+        <div>
+          <h1 className="topic">My Recent Rates</h1>
+        </div>
       </div>
     </div>
   );

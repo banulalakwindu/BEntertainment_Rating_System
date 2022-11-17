@@ -3,7 +3,7 @@ import { excuteQuery } from "../../config/db";
 const getAllMovies = async (req, res) => {
   try {
     let movieData = await excuteQuery(
-      "SELECT *, GROUP_CONCAT(Act_Name order by Mov_Id separator', ') as Act_List, (select avg(Rate_Size) from ratingdb.rate_t where Rate_Mov = Mov_Id) as Mov_Rate FROM ratingdb.movie left join directing on movie.Mov_Id=directing.Dir_Mov left join director on directing.Dir_Dir=director.Dir_Id left join cast_t on movie.Mov_Id = cast_t.Cast_Mov left join actor on cast_t.Cast_Act=actor.Act_Id group by movie.Mov_Id order by Mov_Id desc;",
+      "SELECT *, GROUP_CONCAT(Act_Name order by Mov_Id separator', ') as Act_List, (select avg(Rate_Size) from ratingdb.rate_t where Rate_Mov = Mov_Id) as Mov_Rate FROM ratingdb.movie left join directing on movie.Mov_Id=directing.Dir_Mov left join director on directing.Dir_Dir=director.Dir_Id left join cast_t on movie.Mov_Id = cast_t.Cast_Mov left join actor on cast_t.Cast_Act=actor.Act_Id where tf=1 group by movie.Mov_Id order by Mov_Id desc;",
       []
     );
     res.send(movieData);
@@ -16,7 +16,7 @@ const getMovieById = async (req, res) => {
   let id = req.query.id;
   try {
     let movieData = await excuteQuery(
-      `SELECT *, GROUP_CONCAT(Act_Name order by Mov_Id separator', ') as Act_List, (select avg(Rate_Size) from ratingdb.rate_t where Rate_Mov = ${id}) as Mov_Rate FROM ratingdb.movie left join directing on movie.Mov_Id=directing.Dir_Mov left join director on directing.Dir_Dir=director.Dir_Id left join cast_t on movie.Mov_Id = cast_t.Cast_Mov left join actor on cast_t.Cast_Act=actor.Act_Id WHERE Mov_Id =${id} group by movie.Mov_Id`,
+      `SELECT *, GROUP_CONCAT(Act_Name order by Mov_Id separator', ') as Act_List, (select avg(Rate_Size) from ratingdb.rate_t where Rate_Mov = ${id}) as Mov_Rate FROM ratingdb.movie left join directing on movie.Mov_Id=directing.Dir_Mov left join director on directing.Dir_Dir=director.Dir_Id left join cast_t on movie.Mov_Id = cast_t.Cast_Mov left join actor on cast_t.Cast_Act=actor.Act_Id WHERE Mov_Id =${id} and tf=1 group by movie.Mov_Id`,
       []
     );
     res.status(200).json(movieData);
@@ -29,7 +29,7 @@ const deleteMovieById = async (req, res) => {
   let id = req.query.id;
   try {
     let movieData = await excuteQuery(
-      `DELETE FROM ratingdb.movie WHERE Mov_Id =${id}`,
+      `UPDATE movie SET tf = 0 WHERE Mov_Id = ${id}`,
       [id]
     );
     res.status(200).json(movieData);
@@ -115,8 +115,8 @@ const updateMovie = async (req, res) => {
       [id]
     );
     if (movieData.length > 0) {
-      movieData = await excuteQuery(
-        "UPDATE ratingdb.movie SET Mov_Name=?, Mov_Year=?, Mov_Time=?, Mov_Lang=?, Mov_Country=?, Mov_Age=?, Mov_Desc=?, Mov_Type=?, Mov_Link=? WHERE Mov_Id=?",
+      let movieData = await excuteQuery(
+        "call updateMovie(?,?,?,?,?,?,?,?,?,?)",
         [
           Mov_Name,
           Mov_Year,
@@ -130,6 +130,21 @@ const updateMovie = async (req, res) => {
           id,
         ]
       );
+      // movieData = await excuteQuery(
+      //   "UPDATE ratingdb.movie SET Mov_Name=?, Mov_Year=?, Mov_Time=?, Mov_Lang=?, Mov_Country=?, Mov_Age=?, Mov_Desc=?, Mov_Type=?, Mov_Link=? WHERE Mov_Id=?",
+      //   [
+      //     Mov_Name,
+      //     Mov_Year,
+      //     Mov_Time,
+      //     Mov_Lang,
+      //     Mov_Country,
+      //     Mov_Age,
+      //     Mov_Desc,
+      //     Mov_Type,
+      //     Mov_Link,
+      //     id,
+      //   ]
+      // );
       let movieData1 = await excuteQuery(
         "delete from cast_t where Cast_Mov=?;",
         [id]
