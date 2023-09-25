@@ -7,11 +7,12 @@ Welcome to the BEntertainment Rating System! 🌟 Share, rate, and discover your
 - [About](#about)
 - [Features](#features)
 - [Usage](#usage)
+- [Interface Designs](#interface-designs)
 - [License](#license)
 
 ## About 📺🌟
 
-The BEntertainment Rating System is a web application designed for rating movies and TV-Series. It allows users to:
+The BEntertainment Rating System is a web application designed for rating movies and TV-Series using Next.js. It allows users to:
 
 - 📊 Rate movies and TV series.
 - 📈 View local people's reactions and ratings.
@@ -34,6 +35,15 @@ This project brings the cinema experience to your fingertips, helping you make i
 2. **Rate**: Give your honest opinion on what you've watched.
 3. **Comment**: Join the conversation with fellow entertainment enthusiasts.
 4. **Discover**: Find new favourites based on community ratings.
+
+## Interface Designs 🎨
+
+![Screenshot 1](includes/screenshots/ss_1.png)
+![Screenshot 2](includes/screenshots/ss_2.png)
+![Screenshot 3](includes/screenshots/ss_3.png)
+![Screenshot 4](includes/screenshots/ss_4.png)
+![Screenshot 5](includes/screenshots/ss_5.png)
+![Screenshot 6](includes/screenshots/ss_6.png)
 
 ## License 📜
 
