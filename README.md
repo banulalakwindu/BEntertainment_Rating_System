@@ -47,7 +47,7 @@ This project brings the cinema experience to your fingertips, helping you make i
 
 ## License 📜
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [Apache License 2.0](LICENSE).
 
 ---
 
